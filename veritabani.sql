@@ -1,11 +1,7 @@
 -- BütçeTakip — MySQL Veritabanı Şeması (veritabani.sql)
--- Not: db.php dosyası ilk çalıştırmada bu veritabanını, tabloları ve demo kayıtları
--- otomatik olarak oluşturur; phpMyAdmin'den elle içe aktarmanız şart değildir.
-
-CREATE DATABASE IF NOT EXISTS `butcetakip`
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci;
-
-USE `butcetakip`;
+-- InfinityFree ve XAMPP phpMyAdmin ile %100 uyumludur (CREATE DATABASE / VIEW içermez).
+-- NOT: db.php dosyası ilk çalıştırmada bu tabloları ve demo kayıtları OTOMATİK oluşturur;
+-- bu dosyayı phpMyAdmin'den içe aktarmasanız bile site ilk açılışta kendisi kurar.
 
 CREATE TABLE IF NOT EXISTS `kullanicilar` (
     `id`            INT AUTO_INCREMENT PRIMARY KEY,
@@ -19,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `kullanicilar` (
     `hedef_tutar`   DECIMAL(12,2) NOT NULL DEFAULT 30000,
     `hedef_biriken` DECIMAL(12,2) NOT NULL DEFAULT 4500,
     `olusturma`     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `harcamalar` (
     `id`           INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,4 +31,4 @@ CREATE TABLE IF NOT EXISTS `harcamalar` (
     `dekont`       VARCHAR(255) NULL,
     INDEX (`kullanici_id`),
     FOREIGN KEY (`kullanici_id`) REFERENCES `kullanicilar`(`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
